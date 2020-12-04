@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  martial_db:
+    image: postgres:12-alpine
+    expose:
+      - "5432"
+    volumes:
+      - martial_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=martial_user
+      - POSTGRES_PASSWORD=martial_password
+      - POSTGRES_DB=martial_db
+  martial:
+    build: ./
+    command: python manage.py runserver 0.0.0.0:8150
+    volumes:
+      - .:/usr/src/martial
+    ports:
+      - 8150:8150
+    tty: true
+    stdin_open: true
+    depends_on:
+      - martial_db
+volumes:
+  martial_data:

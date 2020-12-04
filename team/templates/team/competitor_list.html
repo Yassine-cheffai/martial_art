@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+
+<body>
+{% block content %}
+
+   <!-- breadcrumb start-->
+   <section class="breadcrumb breadcrumb_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb_iner text-center">
+                        <div class="breadcrumb_iner_item">
+                            <h2>Teams</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb start-->
+
+    <h1>The list of teams and their competitors</h1>
+    <ul>
+        {% for team in object_list %}
+        <ul><li>
+       <li>Association name: <h3> {{ team.team }} </h3></li>
+        <li>Competitor Name: <h3> {{ team.first_name }} {{ team.last_name }} </h3></li>
+        </li></ul>
+        {% endfor %}
+    </ul>
+{% endblock %}
