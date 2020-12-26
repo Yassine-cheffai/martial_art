@@ -12,16 +12,16 @@ ENV PYTHONUNBUFFERED 1
 RUN apk update \
     && apk add postgresql-dev gcc python3-dev musl-dev
 
-RUN apk --update add \
-    build-base \
-    jpeg-dev \
-    zlib-dev \
-    sudo \
-    bash \
-    poppler \
-    tesseract-ocr
-
-RUN apk add poppler-utils
+# RUN apk --update add \
+#     build-base \
+#     jpeg-dev \
+#     zlib-dev \
+#     sudo \
+#     bash \
+#     poppler \
+#     tesseract-ocr
+#
+# RUN apk add poppler-utils
 
 # install dependencies
 RUN pip install --upgrade pip
