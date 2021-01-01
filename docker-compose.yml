@@ -2,25 +2,27 @@ version: '3'
 
 services:
   martial_db:
-    image: postgres:12-alpine
-    expose:
-      - "5432"
-    volumes:
-      - martial_data:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_USER=martial_user
-      - POSTGRES_PASSWORD=martial_password
-      - POSTGRES_DB=martial_db
-  martial:
-    build: ./
-    command: python manage.py runserver 0.0.0.0:8150
-    volumes:
-      - .:/usr/src/martial
+    image: postgres
     ports:
-      - 8150:8150
-    tty: true
-    stdin_open: true
+      - "5432:5432"
+    volumes:
+      - postgres_mart:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=mart_user
+      - POSTGRES_PASSWORD=mart_password
+      - POSTGRES_DB=mart_db
+  martial:
+    build: .
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8150"]
     depends_on:
       - martial_db
+    volumes:
+      - .:/app/mart
+    ports:
+      - "8150:8150"
+    stdin_open: true
+    tty: true
+
 volumes:
-  martial_data:
+  node-modules:
+  postgres_mart:

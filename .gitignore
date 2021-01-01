@@ -7,7 +7,7 @@ store/*
 *.pyc
 venv/
 .idea/
-static/
+tt/static/
 
 
 # Byte-compiled / optimized / DLL files
