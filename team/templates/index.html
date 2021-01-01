@@ -53,24 +53,19 @@
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Pages
+                                        Archived Tournaments
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="gallery.html">gallery</a>
-                                        <a class="dropdown-item" href="Course_Details.html">Course Details</a>
-                                        <a class="dropdown-item" href="Course_shedule.html">Course shedule</a>
-                                        <a class="dropdown-item" href="elements.html">Elements</a>
-                                    </div>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{% url "about" %}">About</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{% url "contact" %}">Contact</a>
+                                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
                                 </li>
                             </ul>
                         </div>
                         <a href="{% url 'users:signup' %}" class="btn_1 d-none d-lg-inline-block">Register your team</a>
+                        </br><a href="{% url 'login' %}" class="btn_1 d-none d-lg-inline-block"> Login</a>
                     </nav>
                 </div>
             </div>
