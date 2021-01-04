@@ -22,4 +22,5 @@ RUN pip install -r requirements.txt
 
 EXPOSE 8150
 CMD ["python", "manage.py", "migrate"]
+CMD ["python", "manage.py", "collectstatic"]
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8150"]
