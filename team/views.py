@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView
-from .models import Team, Competitor
+
 from .forms import TeamForm, CompetitorForm
+from .models import Competitor
 
 
 def index(request):
@@ -20,18 +21,18 @@ class TeamsList(ListView):
     model = Competitor
 
 
-def add_team(request):
-    # form = TeamForm()
-    if request.method == "POST":
-        form = TeamForm(request.POST)
-        if form.is_valid():
-            team = form.save(commit=False)
-            team.save()
-            return redirect('teams')
-    else:
-        form = TeamForm()
-
-    return render(request, 'team/add_team.html', {'form': form})
+# def add_team(request):
+#     # form = TeamForm()
+#     if request.method == "POST":
+#         form = TeamForm(request.POST)
+#         if form.is_valid():
+#             team = form.save(commit=False)
+#             team.save()
+#             return redirect('teams')
+#     else:
+#         form = TeamForm()
+#
+#     return render(request, 'team/add_team.html', {'form': form})
 
 
 def add_competitor(request):
@@ -46,6 +47,5 @@ def add_competitor(request):
         form = CompetitorForm()
 
     return render(request, 'team/add_comp.html', {'form': form})
-
 
 # def competitor_list()

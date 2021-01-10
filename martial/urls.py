@@ -21,8 +21,6 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from django.views.static import serve
 
-from profiles.views import MyHomeView
-
 urlpatterns = [
     # path('', MyHomeView.as_view(), name='index'),
     path('', include('team.urls')),

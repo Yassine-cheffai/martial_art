@@ -34,4 +34,4 @@ class Competitor(models.Model):
     date_of_birth = models.DateField()
 
     def __str__(self):
-        return self.first_name + " "+self.last_name
+        return self.first_name + " " + self.last_name
