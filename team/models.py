@@ -1,4 +1,5 @@
 from django.db import models
+from tournament.models import Competition , Tournament
 
 country_list = [("alg", "Algeria"),
                 ("lib", "Libya"),
@@ -19,6 +20,8 @@ class Team(models.Model):
     mobile_phone = models.CharField(max_length=200, blank=True, null=True)
     email = models.EmailField(blank=False, null=False)
     website = models.CharField(max_length=200, blank=True, null=True)
+    tournament = models.ForeignKey(Tournament,related_name='get_teams',on_delete=models.CASCADE,blank=True,null=True)
+
 
     def __str__(self):
         return self.team_name
@@ -32,6 +35,8 @@ class Competitor(models.Model):
     sex = models.CharField(max_length=200,
                            choices=[('ml', "Male"), ("fm", "Female")])
     date_of_birth = models.DateField()
+    team = models.ForeignKey(Team,related_name='get_competitors',on_delete=models.CASCADE)
+    competition = models.ForeignKey(Competition,related_name='get_competitors',on_delete=models.CASCADE,blank=True,null=True)
 
     def __str__(self):
         return self.first_name + " " + self.last_name
