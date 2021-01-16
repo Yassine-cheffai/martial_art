@@ -23,6 +23,9 @@ class Tournament(models.Model):
     def create_competitions(self,*args,**kwargs):
         pass
 
+    def __str__(self):
+        return self.tournament_name
+
 
 
 class Competition(models.Model):
@@ -37,3 +40,6 @@ class Competition(models.Model):
     competitors_gender = models.CharField(max_length=256,choices=competitors_gender)
     competitors_category = models.CharField(max_length=256,choices=competitors_category)
     competitors_weight = models.FloatField() 
+
+    def __str__(self):
+        return f"{self.tournament.tournament_name}, {self.competitors_gender}, {self.competitors_category}, -{self.competitors_weight} KG"

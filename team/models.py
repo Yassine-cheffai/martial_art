@@ -39,4 +39,4 @@ class Competitor(models.Model):
     competition = models.ForeignKey(Competition,related_name='get_competitors',on_delete=models.CASCADE,blank=True,null=True)
 
     def __str__(self):
-        return self.first_name + " " + self.last_name
+        return f"{self.first_name} {self.last_name}"
