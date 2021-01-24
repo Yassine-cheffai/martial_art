@@ -6,7 +6,6 @@
     <!-- Posts List start -->
     <div class="col-md-6 change-gutters">
         <!-- Post Form start -->
-        <div id="id_post_create_div"></div>
         <!-- Post Form end -->
 
     </div>
@@ -62,10 +61,6 @@
     <script>
         $(document).ready(function () {
             {% if user.id == owner.id %}
-                $("#id_post_create_div").load(
-                    "{% url 'profiles:post_create' %}",
-                    refreshForms
-                );
             {% endif %}
 
             refreshPosts();
@@ -74,7 +69,6 @@
         function refreshPosts() {
             $(".pagination a.page-link").on('click', function (event) {
                 event.preventDefault();
-                $("#id_post_list").load($(this).attr('href'), refreshPosts); // refresh posts list
             });
         }
 
@@ -88,8 +82,6 @@
                         url: $(this).attr('action'),
                         success: function (response) {
                             console.log(response)
-                            $("#id_post_create_div").load("{% url 'profiles:post_create' %}", refreshForms); // reset form
-                            $("#id_post_list").load("{% url 'profiles:post_list' owner.id 1 %}", refreshPosts); // refresh posts list
                             $("#id_ajax_notification_body").html(response.message);
                             // message notification
                             $("#id_ajax_notification").modal('toggle');

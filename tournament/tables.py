@@ -12,6 +12,7 @@ from django_tables2.export.views import ExportMixin
 from django_tables2.paginators import LazyPaginator
 from .models import Tournament
 
+
 class TournamentTable(tables.Table):
     class Meta:
         model = Tournament

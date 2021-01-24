@@ -18,19 +18,13 @@ class ProfilesHomeView:
         # Home Page Owner
         context['owner'] = owner
         # Posts List
-        context['post_list'] = self.get_posts(owner, 1)
+        # context['post_list'] = self.get_posts(owner, 1)
         # Friends List
         # Discussions List
         # Friendship Requests List
         return context
 
-    def get_posts(self, user, page_no):
-        post_list = Post.objects.filter(owner=user)
-        paginator = Paginator(post_list, post_page_size)
-        return paginator.get_page(page_no)
 
-    def get_requests(self, user, page_no):
-        pass
 
 
 @method_decorator(login_required, name='dispatch')
