@@ -1,1 +1,1 @@
-web: gunicorn martial_art.wsgi
+web: gunicorn martial.wsgi
