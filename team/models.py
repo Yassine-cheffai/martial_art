@@ -36,7 +36,8 @@ class Competitor(models.Model):
                            choices=[('ml', "Male"), ("fm", "Female")])
     date_of_birth = models.DateField()
     team = models.ForeignKey(Team,related_name='get_competitors',on_delete=models.CASCADE)
-    competition = models.ForeignKey(Competition,related_name='get_competitors',on_delete=models.CASCADE,blank=True,null=True)
+    # competition = models.ForeignKey(Competition,related_name='get_competitors',on_delete=models.CASCADE,blank=True,null=True)
+    competition = models.ManyToManyField(Competition, blank=True)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"

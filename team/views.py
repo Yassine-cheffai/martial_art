@@ -6,7 +6,7 @@ from .models import Competitor
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'team/index.html')
 
 
 def contact(request):
