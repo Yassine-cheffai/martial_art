@@ -20,12 +20,7 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
-    # Local Apps
-    'users.apps.UsersConfig',
-    'profiles.apps.ProfilesConfig',
-
-    # Django Apps
-    'jet',
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -36,10 +31,9 @@ INSTALLED_APPS = [
     # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-    'django_tables2',
-    'bootstrap4',
-    'team',
     'django_extensions',
+    'home',
+    'team',
     'tournament',
 ]
 
@@ -83,22 +77,22 @@ DATABASES = {
         # The default database that "ships with" Django is sqliteself.
         # Two lines under this defines the database. If your group uses
         # PostgreSQL, comment these lines out.
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 
         # If your group uses PostgreSQL comment out two lines under this,
         # and add other needed settings.
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
         # 'NAME': 'martial',
         # if you want to define user, password etc.
         # do it here
         # 'USER': 'postgres',
         # 'PASSWORD': 'root'
-        "NAME": "mart_db",
-        "USER": "mart_user",
-        "HOST": "martial_db",
-        "PASSWORD": "mart_password",
-        "PORT": 5432
+        # "NAME": "mart_db",
+        # "USER": "mart_user",
+        # "HOST": "martial_db",
+        # "PASSWORD": "mart_password",
+        # "PORT": 5432
     }
 }
 
@@ -161,9 +155,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Cusomized User Model
-AUTH_USER_MODEL = 'users.CustomUser'
+# AUTH_USER_MODEL = 'users.CustomUser'
 
 # Login and Logout Redirect URL
-LOGIN_REDIRECT_URL = 'profiles:my_home'
-LOGIN_URL = '/users/login'
-LOGOUT_REDIRECT_URL = '/users/login'
+# LOGIN_REDIRECT_URL = 'profiles:my_home'
+# LOGIN_URL = '/users/login'
+# LOGOUT_REDIRECT_URL = '/users/login'
+JET_SIDE_MENU_COMPACT = True

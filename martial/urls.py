@@ -22,14 +22,8 @@ from django.urls import path, include, re_path
 from django.views.static import serve
 
 urlpatterns = [
-    # path('', MyHomeView.as_view(), name='index'),
-    path('', include('team.urls')),
-    path('jet/', include('jet.urls', 'jet')),
+    path('', include('home.urls')),
     path('admin/', admin.site.urls),
-    path('users/', include('users.urls')),
-    path('users/', include('django.contrib.auth.urls')),
-    path('profiles/', include('profiles.urls')),
-    path('tournaments/', include('tournament.urls')),
 ]
 
 
