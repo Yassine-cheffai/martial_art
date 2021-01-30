@@ -10,15 +10,14 @@ country_list = [("alg", "Algeria"),
 
 class Team(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    team_name = models.CharField(max_length=200, blank=False, null=False)
-    address = models.CharField(max_length=200, blank=False, null=False)
-    postal_code = models.CharField(max_length=200, blank=True, null=True)
-    city = models.CharField(max_length=200, blank=False, null=False)
+    team_name = models.CharField(max_length=200)
+    address = models.CharField(max_length=200)
+    postal_code = models.CharField(max_length=200)
+    city = models.CharField(max_length=200)
     country = models.CharField(max_length=200, choices=country_list)
-    telephone = models.CharField(max_length=200, blank=False, null=False)
-    email = models.EmailField(blank=False, null=False)
-    website = models.CharField(max_length=200, blank=True, null=True)
-
+    telephone = models.CharField(max_length=200)
+    email = models.EmailField()
+    website = models.CharField(max_length=200)
 
     def __str__(self):
         return self.team_name
@@ -33,11 +32,11 @@ class Competitor(models.Model):
                            choices=[('ml', "Male"), ("fm", "Female")])
     date_of_birth = models.DateField()
     team = models.ForeignKey(Team,related_name='get_competitors',on_delete=models.CASCADE)
-    # competition = models.ForeignKey(Competition,related_name='get_competitors',on_delete=models.CASCADE,blank=True,null=True)
     competition = models.ManyToManyField(Competition, blank=True)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+
 
 class Coach(models.Model):
     team = models.ForeignKey(Team, related_name="coachs", on_delete=models.CASCADE)
@@ -49,6 +48,7 @@ class Coach(models.Model):
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
+
 class Assistant(models.Model):
     team = models.ForeignKey(Team, related_name="assistants", on_delete=models.CASCADE)
     first_name = models.CharField(max_length=30)
@@ -58,6 +58,7 @@ class Assistant(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+
 
 class Participation(models.Model):
     competition = models.ForeignKey(to=Competition, on_delete=models.CASCADE)
