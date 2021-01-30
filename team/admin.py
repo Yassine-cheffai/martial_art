@@ -13,9 +13,12 @@ class CompetitorAdmin(InlineActionsMixin, admin.TabularInline):
     can_delete = False
 
     inline_actions = ['delete']
+
     def delete(self, request, obj, parent_obj=None):
         obj.delete()
+
     delete.short_description = "Delete"
+
 
 class CoachAdmin(InlineActionsMixin, admin.TabularInline):
     model = Coach
@@ -23,9 +26,12 @@ class CoachAdmin(InlineActionsMixin, admin.TabularInline):
     can_delete = False
 
     inline_actions = ['delete']
+
     def delete(self, request, obj, parent_obj=None):
         obj.delete()
+
     delete.short_description = "Delete"
+
 
 class AssistantAdmin(InlineActionsMixin, admin.TabularInline):
     model = Assistant
@@ -33,13 +39,17 @@ class AssistantAdmin(InlineActionsMixin, admin.TabularInline):
     can_delete = False
 
     inline_actions = ['delete']
+
     def delete(self, request, obj, parent_obj=None):
         obj.delete()
+
     delete.short_description = "Delete"
+
 
 @admin.register(Team)
 class TeamAdmin(InlineActionsModelAdminMixin, admin.ModelAdmin):
     inlines = [CoachAdmin, AssistantAdmin, CompetitorAdmin]
+
 
 @admin.register(Participation)
 class ParticipationAdmin(admin.ModelAdmin):

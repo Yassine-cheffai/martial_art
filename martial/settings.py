@@ -162,3 +162,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # LOGIN_URL = '/users/login'
 # LOGOUT_REDIRECT_URL = '/users/login'
 JET_SIDE_MENU_COMPACT = True
+
+SUIT_CONFIG = {
+    'ADMIN_NAME': 'Martial Art',
+}
