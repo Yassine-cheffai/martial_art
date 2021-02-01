@@ -20,7 +20,7 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
-    'suit',
+    "grappelli",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -167,16 +167,17 @@ SUIT_CONFIG = {
     'ADMIN_NAME': 'Martial Art',
 }
 
-from django.db import models as django_models
-from django import forms
-from django.contrib.admin.options import FORMFIELD_FOR_DBFIELD_DEFAULTS
-import suit.widgets
+# fix django suit inline date picker
+# from django.db import models as django_models
+# from django import forms
+# from django.contrib.admin.options import FORMFIELD_FOR_DBFIELD_DEFAULTS
+# import suit.widgets
 
-FORMFIELD_FOR_DBFIELD_DEFAULTS.update({
-    django_models.DateTimeField: {
-        'form_class': forms.SplitDateTimeField,
-        'widget': suit.widgets.SuitSplitDateTimeWidget
-    },
-    django_models.DateField: {'widget': suit.widgets.SuitDateWidget},
-    django_models.TimeField: {'widget': suit.widgets.SuitTimeWidget},
-})
+# FORMFIELD_FOR_DBFIELD_DEFAULTS.update({
+#     django_models.DateTimeField: {
+#         'form_class': forms.SplitDateTimeField,
+#         'widget': suit.widgets.SuitSplitDateTimeWidget
+#     },
+#     django_models.DateField: {'widget': suit.widgets.SuitDateWidget},
+#     django_models.TimeField: {'widget': suit.widgets.SuitTimeWidget},
+# })

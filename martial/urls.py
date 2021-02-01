@@ -22,6 +22,7 @@ from django.urls import path, include, re_path
 from django.views.static import serve
 
 urlpatterns = [
+    path('grappelli/', include('grappelli.urls')),
     path('', include('home.urls')),
     path('admin/', admin.site.urls),
 ]
