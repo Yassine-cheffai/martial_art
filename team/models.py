@@ -32,6 +32,7 @@ class Competitor(models.Model):
                            choices=[('ml', "Male"), ("fm", "Female")])
     date_of_birth = models.DateField()
     team = models.ForeignKey(Team,related_name='get_competitors',on_delete=models.CASCADE)
+    weight = models.IntegerField(blank=False, null=False)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
