@@ -22,23 +22,23 @@ stages:
 #   only:
 #     - master
 
-test:
-  stage: deploy
-  script:
-    - apt-get update -qy
-    - apt-get install -y ruby-dev
-    - gem install dpl
-    - dpl --provider=heroku --app=martial-art --api-key=$HEROKU_PRODUCTION_API_KEY
-  only:
-    - admin
-
-pre-production:
+production-admin:
   stage: deploy
   script:
     - apt-get update -qy
     - apt-get install -y ruby-dev
     - gem install dpl
     - dpl --provider=heroku --app=martial-art-admin --api-key=$HEROKU_PRODUCTION_API_KEY
+  only:
+    - admin
+
+production:
+  stage: deploy
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=martial-art --api-key=$HEROKU_PRODUCTION_API_KEY
   only:
     # - tags
     - master
