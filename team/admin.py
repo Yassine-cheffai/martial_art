@@ -50,6 +50,15 @@ class AssistantAdmin(InlineActionsMixin, admin.TabularInline):
 class TeamAdmin(InlineActionsModelAdminMixin, admin.ModelAdmin):
     inlines = [CoachAdmin, AssistantAdmin, CompetitorAdmin]
 
+    def get_exclude(self, request, obj=None):
+        if not request.user.is_superuser:
+            return ('user',)
+
+    def get_queryset(self, request):
+        if request.user.is_superuser:
+            return Team.objects.all()
+        return Team.objects.filter(user=request.user)
+
 
 @admin.register(Participation)
 class ParticipationAdmin(admin.ModelAdmin):

@@ -20,6 +20,7 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
+    'grappelli.dashboard',
     "grappelli",
     'django.contrib.admin',
     'django.contrib.auth',
@@ -181,3 +182,5 @@ SUIT_CONFIG = {
 #     django_models.DateField: {'widget': suit.widgets.SuitDateWidget},
 #     django_models.TimeField: {'widget': suit.widgets.SuitTimeWidget},
 # })
+GRAPPELLI_ADMIN_TITLE="Martial Art"
+GRAPPELLI_INDEX_DASHBOARD = 'martial.dashboard.CustomIndexDashboard'
