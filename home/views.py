@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from tournament.models import Tournament
+
 
 def home(request):
-    return render(request, "home/index.html")
+    tournaments = Tournament.objects.all()
+    return render(request, "home/index.html", context={"tournaments": tournaments})
