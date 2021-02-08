@@ -11,14 +11,14 @@
     <title>Martial arts</title>
   </head>
   <body>
-      <div class="container">
-        <nav class="navbar navbar-light bg-light">
+      <div>
+        <nav class="navbar navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand">Martial Arts</a>
-                <form class="d-flex">
-                    <button class="btn btn-success me-2" type="submit">Sign Up</button>
-                    <button class="btn btn-outline-success" type="submit">Sign In</button>
-                </form>
+                <div>
+                <a><button class="btn btn-info me-2" type="submit">Sign Up</button></a>
+                <a href="admin/login/"><button class="btn btn-outline-info" type="submit">Sign In</button></a>
+                </div>
             </div>
         </nav>
       {% block content %}
