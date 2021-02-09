@@ -1,0 +1,7 @@
+{% extends 'home/base.html' %}
+{% block content %}
+<div class="container text-center p-3 mb-4">
+    <a href="{% if user.is_authenticated %}{{'admin/tournament/tournament/'}}{%else%}{{'admin/login/'}}{%endif%}">
+    <button type="button" class="btn btn-info btn-lg">Browse Tournaments</button>
+</div>
+{% endblock %}
