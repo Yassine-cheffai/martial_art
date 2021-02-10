@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 from tournament.models import Competition , Tournament
 from django.contrib.auth.models import User
 
@@ -32,7 +33,7 @@ class Competitor(models.Model):
                            choices=[('ml', "Male"), ("fm", "Female")])
     date_of_birth = models.DateField()
     team = models.ForeignKey(Team,related_name='get_competitors',on_delete=models.CASCADE)
-    weight = models.IntegerField(blank=False, null=False)
+    weight = models.IntegerField(blank=False, null=False, validators=[MaxValueValidator(200), MinValueValidator(10)])
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
