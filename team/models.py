@@ -1,3 +1,6 @@
+from datetime import datetime
+
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from tournament.models import Competition , Tournament
@@ -37,6 +40,10 @@ class Competitor(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+
+    def clean(self):
+        if self.date_of_birth > datetime.today().date():
+            raise ValidationError("birth date is wrong")
 
 
 class Coach(models.Model):
