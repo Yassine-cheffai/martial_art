@@ -5,6 +5,7 @@ from inline_actions.admin import InlineActionsMixin
 from inline_actions.admin import InlineActionsModelAdminMixin
 
 from .models import Team, Competitor, Coach, Assistant, Participation
+from .forms import ParticipationForm
 
 
 class CompetitorAdmin(InlineActionsMixin, admin.TabularInline):
@@ -63,3 +64,4 @@ class TeamAdmin(InlineActionsModelAdminMixin, admin.ModelAdmin):
 @admin.register(Participation)
 class ParticipationAdmin(admin.ModelAdmin):
     filter_horizontal = ['competitors']
+    form = ParticipationForm
