@@ -1,3 +1,6 @@
 from django.test import TestCase
 
-# Create your tests here.
+
+class TournamentTestCase(TestCase):
+    def test_tournament_creation(self):
+        self.assertTrue(True)
