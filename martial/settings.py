@@ -1,13 +1,6 @@
 import os
 
 import dj_database_url
-# import django_heroku
-try:
-    # Configure Django App for Heroku.
-    import django_heroku
-    django_heroku.settings(locals())
-except ImportError:
-    found = False
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -150,8 +143,6 @@ STATICFILES_DIRS = [
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Activate Django-Heroku.
-# django_heroku.settings(locals())
 
 # Media files
 MEDIA_URL = '/media/'
@@ -189,4 +180,12 @@ SUIT_CONFIG = {
 # })
 GRAPPELLI_ADMIN_TITLE="Martial Art"
 GRAPPELLI_INDEX_DASHBOARD = 'martial.dashboard.CustomIndexDashboard'
-# django_heroku.settings(locals(), test_runner=False)
+
+try:
+    # Configure Django App for Heroku.
+    # doing this to avoid running the heroku test runner on github ci
+    # ther is this option but it dosn't work : django_heroku.settings(locals(), test_runner=False)
+    import django_heroku
+    django_heroku.settings(locals())
+except ImportError:
+    found = False
