@@ -184,3 +184,4 @@ SUIT_CONFIG = {
 # })
 GRAPPELLI_ADMIN_TITLE="Martial Art"
 GRAPPELLI_INDEX_DASHBOARD = 'martial.dashboard.CustomIndexDashboard'
+django_heroku.settings(locals(), test_runner=False)
