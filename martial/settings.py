@@ -1,8 +1,13 @@
 import os
 
 import dj_database_url
-import django_heroku
-
+# import django_heroku
+try:
+    # Configure Django App for Heroku.
+    import django_heroku
+    django_heroku.settings(locals())
+except ImportError:
+    found = False
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -184,4 +189,4 @@ SUIT_CONFIG = {
 # })
 GRAPPELLI_ADMIN_TITLE="Martial Art"
 GRAPPELLI_INDEX_DASHBOARD = 'martial.dashboard.CustomIndexDashboard'
-django_heroku.settings(locals(), test_runner=False)
+# django_heroku.settings(locals(), test_runner=False)
