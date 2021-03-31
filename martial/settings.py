@@ -160,31 +160,14 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # LOGOUT_REDIRECT_URL = '/users/login'
 JET_SIDE_MENU_COMPACT = True
 
-SUIT_CONFIG = {
-    'ADMIN_NAME': 'Martial Art',
-}
-
-# fix django suit inline date picker
-# from django.db import models as django_models
-# from django import forms
-# from django.contrib.admin.options import FORMFIELD_FOR_DBFIELD_DEFAULTS
-# import suit.widgets
-
-# FORMFIELD_FOR_DBFIELD_DEFAULTS.update({
-#     django_models.DateTimeField: {
-#         'form_class': forms.SplitDateTimeField,
-#         'widget': suit.widgets.SuitSplitDateTimeWidget
-#     },
-#     django_models.DateField: {'widget': suit.widgets.SuitDateWidget},
-#     django_models.TimeField: {'widget': suit.widgets.SuitTimeWidget},
-# })
 GRAPPELLI_ADMIN_TITLE="Martial Art"
 GRAPPELLI_INDEX_DASHBOARD = 'martial.dashboard.CustomIndexDashboard'
 
 try:
     # Configure Django App for Heroku.
-    # doing this to avoid running the heroku test runner on github ci
-    # ther is this option but it dosn't work : django_heroku.settings(locals(), test_runner=False)
+    # doing this to avoid running the heroku test runner on github ci which make extra stuff with test db and crash the ci
+    # should be after the BASE_DIR config
+    # there is this option but it dosn't work : django_heroku.settings(locals(), test_runner=False)
     import django_heroku
     django_heroku.settings(locals())
 except ImportError:
