@@ -2,14 +2,14 @@
 
 
 ### how to start the project
-1 - install python-venv or virtualenv
-2 - create a virtual env and run it
-3 - install the requirements
-4 - apply th migrations and create a create a super user
-5 - enjoy coding :)
+  - install python-venv or virtualenv
+  - create a virtual env and run it
+  - install the requirements
+  - apply th migrations and create a create a super user
+  - enjoy coding :)
 
-### composition
-this project contain mainly 3 interfaces/parts:
+### the project
+this project contain mainly 3 parts:
   - the admin interface
   - the user interface
   - API
