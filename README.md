@@ -27,3 +27,4 @@ the production should use postgresql DB, may be using the one provided by heroku
 
 ### unit test
 mainly using the standard django unit test, maybe with an sqlite database even that we have to be carefull about using specific postresql fields types, this may cause issues
+running unit test on the github ci cause issues because of django-heroku mess up with the sqlite db test configuration, that's why on the ci we use an other requirements file that don't have django-heroku

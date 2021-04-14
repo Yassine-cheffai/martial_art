@@ -1,4 +1,7 @@
+import datetime
+
 from django.db import models
+from django.core.exceptions import ValidationError
 
 
 class Tournament(models.Model):
@@ -41,6 +44,13 @@ class Competition(models.Model):
     competitors_category = models.CharField(max_length=256,
                                             choices=competitors_category)
     competitors_weight = models.FloatField()
+    competitors_years = models.CharField(max_length=512, null=True, blank=True) # a list of years seperated by comma ,  with no space, this is a wowrk arround to avoid using postgre list field
+
+    def clean(self):
+        years = [str(year) for year in range(1950, datetime.datetime.today().year)]
+        for year in self.competitors_years.split(","):
+            if year not in years:
+                raise ValidationError("the competition years combination is not valid")
 
     def __str__(self):
         return f"{self.tournament.tournament_name}, {self.competitors_gender}, {self.competitors_category}, -{self.competitors_weight} KG"
