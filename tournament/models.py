@@ -1,5 +1,6 @@
 import datetime
 
+import pytz
 from django.db import models
 from django.core.exceptions import ValidationError
 
@@ -19,6 +20,22 @@ class Tournament(models.Model):
 
     def __str__(self):
         return self.tournament_name
+
+    def clean(self):
+        utc = pytz.UTC
+        today = utc.localize(datetime.datetime.today())
+
+        if self.tournament_enrolment_close_date < today:
+            raise ValidationError("Tournament Enrolment Close Date can't be in the past")
+
+        if self.tournament_date < today.date():
+            raise ValidationError("Tournament Date can't be in the past")
+
+        if self.tournament_competition_start_date < today.date():
+            raise ValidationError("Tournament Competition Start Date can't be in the past")
+
+        if self.tournament_competition_start_date > self.tournament_competition_close_date:
+            raise ValidationError("Tournament Competition Start Date can't be after the Tournament Competition Close Date")
 
 
 class Competition(models.Model):
@@ -44,7 +61,7 @@ class Competition(models.Model):
     competitors_category = models.CharField(max_length=256,
                                             choices=competitors_category)
     competitors_weight = models.FloatField()
-    competitors_years = models.CharField(max_length=512, null=True, blank=True) # a list of years seperated by comma ,  with no space, this is a wowrk arround to avoid using postgre list field
+    competitors_years = models.CharField(max_length=512, null=True, blank=True) # a list of years seperated by comma ,  with no space, this is a work arround to avoid using postgre list field
 
     def clean(self):
         years = [str(year) for year in range(1950, datetime.datetime.today().year)]
